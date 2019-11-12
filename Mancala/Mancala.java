@@ -35,12 +35,14 @@ public class Mancala {
         }
         ret = ret + String.format("%3s"," |  " + score);
         
-
-        return ret;
+        
+        return ret + "\r\n";
     }
     
-    public static void move(int n) {
-        if (move.equals(4)) {
+    //public static void move(int n) {
+    public void move(int n) {
+        //if (move.equals(4)) {
+            if (n == 4) {    
             gameBoard[1][2] = 0;
             gameBoard[1][3] = 5;
             gameBoard[1][4] = 5;
