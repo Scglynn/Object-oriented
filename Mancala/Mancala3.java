@@ -184,4 +184,14 @@ public class Mancala3{
             return score1;
         }
     }
+    
+    public static void main(String[] args)
+    {
+        Mancala m = new Mancala();
+        assert m.toString().equals(" 0 |  4  4  4  4  4  4 |  *\n - |  4  4  4  4  4  4 |  0\n") : m;
+    }
+
+    //Exception in thread "main" java.lang.AssertionError:  0 |  4  4  4  4  4  4 |  *
+ //- |  4  4  4  4  4  4 |  0
+   //     at Mancala.main(Mancala.java:152)
 }
