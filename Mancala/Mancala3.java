@@ -188,10 +188,9 @@ public class Mancala3{
     public static void main(String[] args)
     {
         Mancala m = new Mancala();
-        assert m.toString().equals(" 0 |  4  4  4  4  4  4 |  *\n - |  4  4  4  4  4  4 |  0\n") : m;
+        m.move(6);
+        assert m.toString().equals(" 0 |  4  4  4  4  4  4 |  -\n * |  0  5  5  5  5  4 |  0\n") : m;
     }
-
-    //Exception in thread "main" java.lang.AssertionError:  0 |  4  4  4  4  4  4 |  *
- //- |  4  4  4  4  4  4 |  0
-   //     at Mancala.main(Mancala.java:152)
+    //Exception in thread "main" java.lang.AssertionError:  0 |  4  4  4  4  4  4 |  -
+ //* |  0  5  5  5  5  5 |  0
 }
