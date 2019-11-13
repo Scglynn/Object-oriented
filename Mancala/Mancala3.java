@@ -19,7 +19,7 @@ public class Mancala3{
     }
     public String toString() {
         String ret = "";
-        ret = ret + String.format("%3s",score1 + " |");
+        ret = ret + String.format("%4s",score1 + " |");
         for(int i = 0; i < 6; i++) {
             ret = ret + String.format("%3d", gameBoard[0][i]);
         }
@@ -30,19 +30,19 @@ public class Mancala3{
             ret = ret + "-";
         }
 
-        ret = ret+"\r\n";
+        ret = ret+"\n";
 
         if (playerTurn == 1) {
-            ret = ret + String.format("%3s", "* |");
+            ret = ret + String.format("%4s", "* |");
         } else {
-            ret = ret + String.format("%3s", "- |");
+            ret = ret + String.format("%4s", "- |");
         }
 
         for (int i = 0; i < 6; i++) {
             
             ret = ret + String.format("%3d", gameBoard[1][i]);
         }
-        ret = ret + String.format("%3s"," |  " + score0 + "\r\n");
+        ret = ret + String.format("%4s"," |  " + score0 + "\n");
         
 
         return ret;
