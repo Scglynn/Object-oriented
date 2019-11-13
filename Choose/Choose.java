@@ -1,156 +1,124 @@
-
 import java.util.*;
 
 public class Choose {
-    private int [][] value;
-    private int size;    
-    private String turn;
-    private int H = 0;
-    private int V = 0;
-    private int row;
-    private int col;
+    int[] positionLocated = new int[2];
+    int playerOneScore = 0;
+    int playerTwoScore = 0;
+    int gameBoardSize = 0;
+    int row = 0;
+    int column = 0;
+    String [][] gameBoard;
+    boolean hTurn = false;
+
 
     public void read(Scanner s) {
-
-        size =Integer.parseInt(s.next());
-        turn = s.next();
-        H = Integer.parseInt(s.next());
-        V = Integer.parseInt(s.next());
-
-    
-        value = new int [size][size];
-
-        while(s.hasNext()){
-            for (int r = 0; r < size; r++) {
-                for (int c = 0; c < size; c++) {
-                    String nxt = s.next();
-                    try {
-                        if(nxt.equals("@")) {
-                            value[r][c] = -2;
-                        } 
-                        if( nxt.equals("-")) {
-                            value[r][c] = -1;
-                        } else {
-                            
-                            value[r][c] = Integer.parseInt(nxt);
-                        }
-                    } catch (Exception e) {
-                        
-                    }
-                    
-                }
-            }
-        }
-
-    } 
-
-     public int getSize() {
-
-            return size;
-        }
-        public char getPlayer() {
-
-            return turn.charAt(0);
-        }
-        public int getScore(char player) {
-            if (player == 'H') {
-
-                return H;
-                
-            }else {
-
-                return V;
-            }
-        }
-        public int getSelectionRow(){
-            return row;
-        }
-        public int getSelectionCol(){
-
-            return col;
-        }
-        public int getValue(int r, int c) {
-            
-            
-            return value[r][c];
-        }
-
+        gameBoardSize = s.nextInt();
+        if(s.next().equals("H"))
+            hTurn = true;
         
-        private int getBestMove() {
-            int max = 0; 
-            if (turn == "H") {
-                
-                for(int c=0; c < size; c++) {
-                    if(value[c][col] > max) {
-                        max = value[c][col];
-                        row = c;
-                    }
+        playerOneScore = s.nextInt();
+        playerTwoScore = s.nextInt();
+        gameBoard = new String[gameBoardSize][gameBoardSize];
+
+        for(int i = 0; i < gameBoardSize; i++) {
+            for(int j = 0; j < gameBoardSize; j++) {
+                gameBoard[i][j] = s.next();
+                if(gameBoard[i][j].equals( "@")) {
+                     positionLocated[0] = i;
+                     positionLocated[1] = j;
                 }
-
-            } else {
-                
-                for(int c=0; c < size; c++) {
-                    if(value[row][c] > max) {
-                        max = value[row][c];
-                        col = c;
-                    }
-                }
-            }
-            return max;          
-        }
-
-        public void move(int n) { 
-            value[row][col] = -1; 
-            int moveVal = getBestMove();
-            if(moveVal > 0) {
-                if (turn == "H") {
-                    
-                    H = H + moveVal;
-                    
-                    value[row][col] = -2;
-                    turn = "V";
-
-                } else {
-
-                    V = V + moveVal;
-                    value[row][col] = -2;
-                    turn = "H";
-                }          
+                row = positionLocated[0];
+                column = positionLocated[1];
             }
         }
-
-
-        public String toString() {
-            String ret = "";
-            for (int x = 0; x < value.length; x++) {
-                for (int y = 0; y < value.length; y++) {
-                    if(value[x][y] == -1) {
-                        ret = ret + String.format("%4s", "-");
-                    } 
-                    if(value[x][y] == -2) {
-                        ret = ret + String.format("%4s", "@");
-                    }
-                    if(value[x][y] >= 0) {
-                        ret = ret+(String.format("%4d",value[x][y]));
-                    }
-                }
-                ret = ret+"\r\n";
-            }
-        return ret;
     }
-    public static void main(String[] args)
-    {
-        Choose c = new Choose();
-        Scanner s = new Scanner("2 H 5 6 1 2 @ 2");
-        c.read(s);
-        assert c.getSize()==2;
-        assert c.getPlayer()=='H';
-        assert c.getScore('H')==5;
-        assert c.getScore('V')==6;
-        assert c.getSelectionRow()==1 : c.getSelectionRow();
-        assert c.getSelectionCol()==0;
-        assert c.getValue(0,0)==1;
-        assert c.getValue(0,1)==2;
+
+    public int getSize() {
+        return gameBoardSize;
+    }
+
+    public char getPlayer() {
+        if(hTurn)
+            return "H".charAt(0);
+        return "V".charAt(0);
+        
+    }
+
+    //use the Ternary operator of if-then-else statement; colon = else
+    public int getScore(char player) {
+        int score = 0;
+        if (String.valueOf(player).equals("H")) {
+            score = playerOneScore;
+        } else {
+            score = playerTwoScore;
+        }
+        return score;
+        //return String.valueOf(player).equals("H") ? playerOneScore : playerTwoScore;
+    }
+
+    public int getSelectionRow(){
+        return row;
+    }
+
+    public int getSelectionCol(){
+        return column;
+    }
+
+    //use the Ternary operator of if-then-else loop
+    public int getValue(int c, int r) {
+        int value = 0;
+        if (gameBoard[c][r].equals("-") || gameBoard[c][r].equals("@")) {
+            value = -1;
+        } else {
+            value = Integer.parseInt(gameBoard[c][r]);
+        }
+        return value;
+        //return gameBoard[c][r].equals("-") || gameBoard[c][r].equals("@") ? -1 : Integer.parseInt(gameBoard[c][r]);
+    }
+
+    public void move(int n) {
+        int[] location = new int[2];
+
+        if(hTurn) {
+            location[0] = positionLocated[0];
+            location[1] = n;
+        } else {
+            location[0] = n;
+            location[1] = positionLocated[1];
+        }
+
+        if(hTurn)
+            playerOneScore = playerOneScore + Integer.parseInt(gameBoard[location[0]][location[1]]);
+            
+        else
+            playerTwoScore = playerTwoScore + Integer.parseInt(gameBoard[location[0]][location[1]]);
+
+
+        gameBoard[location[0]][location[1]] = "@"; 
+        gameBoard[positionLocated[0]][positionLocated[1]] = "-";
+
+        positionLocated[0] = location[0];
+        positionLocated[1] = location[1];
+
+        hTurn = !hTurn;
+    }
+
+    public String toString() {
+        String ret = "";
+        String turn = "V";
+
+        if(hTurn)
+            turn = "H";
+        ret += (gameBoardSize + " " + turn + " " + getScore('H') + " " + getScore('V') + "\n");
+
+        for(int i = 0; i < gameBoard.length; i++) {
+            for(int j = 0; j < gameBoard.length; j++) {
+                ret += (gameBoard[i][j] + " ");
+            }
+         ret += "\n";
+        }
+        return ret;
+
     }
 
 }
