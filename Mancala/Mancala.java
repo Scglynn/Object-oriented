@@ -152,13 +152,15 @@ public class Mancala{
             return score1;
         }
     }
-    
     public static void main(String[] args)
     {
         Mancala m = new Mancala();
+        m.move(2);
         m.move(6);
-        assert m.toString().equals(" 0 |  4  4  4  4  4  4 |  -\n * |  0  5  5  5  5  4 |  0\n") : m;
+        m.move(6);
+        assert m.toString().equals(" 0 |  5  5  5  5  0  0 |  -\n * |  0  5  5  5  0  5 |  8\n") : m;
+        assert m.getPlayer()==1 : m;
+        assert m.getScore(0)==8 : m;
+        assert m.getScore(1)==0 : m;
     }
-    //Exception in thread "main" java.lang.AssertionError:  0 |  4  4  4  4  4  4 |  -
- //* |  0  5  5  5  5  5 |  0
 }
