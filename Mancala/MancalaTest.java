@@ -3,6 +3,7 @@ public class MancalaTest {
         Mancala g = new Mancala();
         System.out.println(g);
 
+        //g.move(6);
         g.move(4);
         System.out.println(g);
 
