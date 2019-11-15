@@ -2,9 +2,8 @@ public class MancalaTest {
     public static void main(String[] args) {
 
         int[] pits = {5,5,5,5,0,4,4,0,5,5,5};
-        //int[] pits = {4,4,4,4,4,4,4,4,4,4,4};
-        Mancala2 g = new Mancala2(0, pits, 1, 0);
-        //Mancala2 g = new Mancala2(0, pits, 0, 0);
+
+        Mancala g = new Mancala(0, pits, 1, 0);
         System.out.println(g);
 
         g.move(4);

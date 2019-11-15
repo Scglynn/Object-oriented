@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Mancala2{
+public class Mancala{
 
     private int [][] gameBoard;
     private int row = 2;
@@ -9,7 +9,18 @@ public class Mancala2{
     public int score0 = 0;
     public int playerTurn = 0;
 
-    public Mancala2(int goal1, int[] pits, int goal0, int player) {
+    
+    public Mancala() {
+        gameBoard = new int [row][col];
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < col; j++) {
+                gameBoard[i][j] = 4;
+            }
+        }
+    }
+    
+    
+    public Mancala(int goal1, int[] pits, int goal0, int player) {
         //init the class variables to the values passed in on constructor.    
         score0 = goal0;
         score1 = goal1;
@@ -56,15 +67,34 @@ public class Mancala2{
     //if either one is then the game is over
     public boolean gameOver() {
         //check arrays here and return true if either is all 0
-        //else
-        return false;
+        boolean p0Over = true;
+        boolean p1Over = true;
+        for (int j = 0; j < 6; j++) {
+            if (gameBoard[0][j] > 0) {
+                p0Over = false;
+            }
+        }
+        for (int j = 0; j < 6; j++) {
+            if (gameBoard[1][j] > 0) {
+                p1Over = false;
+            }
+        }
+        return p0Over || p1Over;
     }
 
-
+    private void calcFinalScore() {
+        for (int j = 0; j < 6; j++) {
+            score0 += gameBoard[0][j];
+        }
+        for (int j = 0; j < 6; j++) {
+            score1 += gameBoard[1][j];
+        }
+    }
 
     public boolean move(int n) {
 
-        if(gameOver() == true) {
+        if (gameOver() == true) {
+            calcFinalScore();
             return false;
         }
         int pit = 0; //the pit being selected. It is the nth pit from the current players goal
@@ -85,8 +115,10 @@ public class Mancala2{
             //this is where it gets confusing. It's slightly different for player 0 then it is for player 1. 
             //for player 0 start with the pit next to the selected pit, loop until the last col, adding 1 to each pit.
             for (int s = pit + 1; s < col; s++) {
-                gameBoard[1][s] = gameBoard[1][s] + 1;
-                stones = stones -1;
+                if (stones > 0) {
+                    gameBoard[1][s] = gameBoard[1][s] + 1;
+                    stones = stones - 1;
+                }
             }
             //if we have stones left over, add 1 to the goal
             if(stones > 0) {
@@ -139,40 +171,6 @@ public class Mancala2{
         //we made a move, return true
         return true;
 
-
-        //none of this is needed anymore
-
-        // if (n == 4 && playerTurn == 0) {
-        //     gameBoard[1][2] = 0;
-        //     gameBoard[1][3] = gameBoard[1][3] + 1;
-        //     gameBoard[1][4] = gameBoard[1][4] + 1;
-        //     gameBoard[1][5] = gameBoard[1][5] + 1;
-        //     score0 = score0 + 1;
-        // }
-        // if (n == 3 && playerTurn == 0) {
-        //     gameBoard[1][3] = 0;
-        //     gameBoard[1][4] = gameBoard[1][4] + 1;
-        //     gameBoard[1][5] = gameBoard[1][5] + 1;
-        //     gameBoard[0][5] = gameBoard[0][5] + 1;
-        //     gameBoard[0][4] = gameBoard[0][4] + 1;
-        //     score0 = score0+ 1;
-
-        // }
-        // if (n == 3 && playerTurn == 1) {
-        //     gameBoard[0][2] = 0;
-        //     gameBoard[0][1] = gameBoard[0][1] + 1;
-        //     gameBoard[0][0] = gameBoard[0][0] + 1;
-        //     score1 = score1 + 1;
-        //     gameBoard[1][0] = gameBoard[1][0] + 1;
-        // }
-
-
-        // if (playerTurn == 0) {
-        //     playerTurn = 1;
-        // } else {
-
-        //     playerTurn = 0;
-        // }
     }
 
     public int getPlayer() {
