@@ -5,9 +5,9 @@ public class Mancala{
     private int [][] gameBoard;
     private int row = 2;
     private int col = 6;
-    public int score1= 0;
-    public int score0 = 0;
-    public int playerTurn = 0;
+    private int score1= 0;
+    private int score0 = 0;
+    private int playerTurn = 0;
 
     
     public Mancala() {
@@ -43,19 +43,30 @@ public class Mancala{
 
     public String toString() {
         String ret = "";
-        ret = ret + String.format("%3s",score1 + " |");
+        ret = ret + String.format("%4s",score1 + " |");
         for(int i = 0; i < 6; i++) {
             ret = ret + String.format("%3d", gameBoard[0][i]);
         }
-        ret = ret + String.format("%3s", " |  *");
+        ret = ret + String.format("%3s", " |  ");
+        if (playerTurn == 0) {
+            ret = ret + "*";
+        } else {
+            ret = ret + "-";
+        }
 
-        ret = ret+"\r\n";
-        ret = ret + String.format("%3s", "- |");
+        ret = ret+"\n";
+
+        if (playerTurn == 1) {
+            ret = ret + String.format("%4s", "* |");
+        } else {
+            ret = ret + String.format("%4s", "- |");
+        }
+
         for (int i = 0; i < 6; i++) {
             
             ret = ret + String.format("%3d", gameBoard[1][i]);
         }
-        ret = ret + String.format("%3s"," |  " + score0 + "\r\n");
+        ret = ret + String.format("%4s"," |  " + score0 + "\n");
         
 
         return ret;
