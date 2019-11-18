@@ -83,13 +83,13 @@ public class Fraction {
 
         if (n > 0) {
             if (n>d) {
-                whole = whole + n /d;
-                n = n-d;
+                whole = (whole + n) /d;
+                n = n - d;
             } 
         }else {
             if (-(n) > d) {
-                whole = whole + n/d;
-                n= n +d;
+                whole = (whole + n)/d;
+                n= n + d;
             }
         }
         if (whole == 0) {
