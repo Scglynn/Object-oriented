@@ -74,8 +74,31 @@ public class Fraction {
     }
 
     public Fraction subtract(Fraction other) {
-        Fraction result = new Fraction(whole, (numerator*other.denominator) - (other.numerator*denominator), (denominator*other.denominator));
-        return result;
+        int whole, n , d;
+        int num1 = this.denominator * this.whole + this.numerator;
+        int num2 = other.denominator * other.whole + other.numerator;
+        whole = 0;
+        n = num1 * other.denominator - this.denominator*num2;
+        d = this.denominator*other.denominator;
+
+        if (n > 0) {
+            if (n>d) {
+                whole = whole + n /d;
+                n = n-d;
+            } 
+        }else {
+            if (-(n) > d) {
+                whole = whole + n/d;
+                n= n +d;
+            }
+        }
+        if (whole == 0) {
+            return new Fraction(n,d);
+        }
+        if(n == 0) 
+            return new Fraction (whole);
+        
+        return new Fraction(whole, n,d);
     }
 
     public Fraction multiply(Fraction other) {
