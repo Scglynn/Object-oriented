@@ -129,13 +129,27 @@ public class Mancala{
                 if (stones > 0) {
                     gameBoard[1][s] = gameBoard[1][s] + 1;
                     stones = stones - 1;
+                    //rule 4 test. If it's the last stone and it was put into an empty pit on players side
+                    //then take it out and put it in the goal. Then take all the stones in the pit directly across
+                    //and put them in the goal.
+                    if(stones == 0) {
+                        if(gameBoard[1][s] == 1) {
+                            gameBoard[1][s] = 0;
+                            score0 = score0 + 1;
+                            score0 = score0 + gameBoard[0][s];
+                            gameBoard[0][s] = 0; 
+                        }
+                    }
+                    //end rule 4 test
                 }
             }
             //if we have stones left over, add 1 to the goal
             if(stones > 0) {
                 score0 = score0 + 1;
                 stones = stones -1;
-                playerTurn = 0; //if your last stone is added to the goal, you get to go again.
+                if(stones == 0) {
+                    playerTurn = 0; //if your last stone is added to the goal, you get to go again.
+                }
             //if we still have stones leftover, add them to the other side.
                 if(stones > 0) {
                     //this is to keep track of the pits on the other side. We start at the 5th element of array (col 6)
@@ -162,6 +176,16 @@ public class Mancala{
             for (int s = pit - 1; s >= 0; s--) {
                 gameBoard[0][s] = gameBoard[0][s] + 1;
                 stones = stones -1;
+                //rule 4 test. See above.
+                if(stones == 0) {
+                    if(gameBoard[0][s] == 1) {
+                        gameBoard[0][s] = 0;
+                        score1 = score1 + 1;
+                        score1 = score1 + gameBoard[1][s];
+                        gameBoard[1][s] = 0; 
+                    }
+                }
+                //end rule 4 test
             }
             if(stones > 0) {
                 score1 = score1 + 1;
