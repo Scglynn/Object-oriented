@@ -23,7 +23,7 @@ public class Mancala{
         for(int i = 0; i < 6; i++) {
             ret = ret + String.format("%3d", gameBoard[0][i]);
         }
-        ret = ret + String.format("%3s", " |  ");
+        ret = ret + String.format("%4s", " |  ");
         if (playerTurn == 0) {
             ret = ret + "*";
         } else {
