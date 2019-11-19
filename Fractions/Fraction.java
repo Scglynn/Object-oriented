@@ -77,7 +77,7 @@ public class Fraction {
         int whole, n , d;
         int num1 = this.denominator * this.whole + this.numerator;
         int num2 = other.denominator * other.whole + other.numerator;
-        whole = 0;
+        whole = other.whole;
         n = num1 * other.denominator - this.denominator*num2;
         d = this.denominator*other.denominator;
 
@@ -140,6 +140,9 @@ public class Fraction {
         }
         if (newVals[1] == 0 || newVals[1] == newVals[2]) {
             return newVals[0] + "";
+        }
+        if (newVals[1] < 0 ) {
+            return "-" + newVals[0];
         }
 
         return newVals[0] + " " + newVals[1] + "/" + newVals[2];
