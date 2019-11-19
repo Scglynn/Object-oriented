@@ -5,9 +5,9 @@ public class Mancala{
     private int [][] gameBoard;
     private int row = 2;
     private int col = 6;
-    public int score1= 0;
-    public int score0 = 0;
-    public int playerTurn = 0;
+    private int score1= 0;
+    private int score0 = 0;
+    private int playerTurn = 0;
 
     public Mancala() {
         gameBoard = new int [row][col];
@@ -52,7 +52,7 @@ public class Mancala{
     //you need to implement this. 
     //remember when we talked about checking each array to see if they are all 0
     //if either one is then the game is over
-    public boolean gameOver() {
+    private boolean gameOver() {
         //check arrays here and return true if either is all 0
         //else
         return false;
@@ -176,15 +176,4 @@ public class Mancala{
             return score1;
         }
     }
-    // public static void main(String[] args)
-    // {
-    //     Mancala m = new Mancala();
-    //     m.move(2);
-    //     m.move(6);
-    //     m.move(6);
-    //     assert m.toString().equals(" 0 |  5  5  5  5  0  0 |  -\n * |  0  5  5  5  0  5 |  8\n") : m;
-    //     assert m.getPlayer()==1 : m;
-    //     assert m.getScore(0)==8 : m;
-    //     assert m.getScore(1)==0 : m;
-    // }
 }
