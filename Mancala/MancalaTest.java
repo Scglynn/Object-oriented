@@ -3,14 +3,15 @@ public class MancalaTest {
         Mancala g = new Mancala();
         System.out.println(g);
 
-        //g.move(6);
-        g.move(4);
+        g.move(6);
+        System.out.println(g);
+        g.move(2);
         System.out.println(g);
 
-        g.move(3);
+        g.move(6);
         System.out.println(g);
 
-        g.move(3);
+        g.move(6);
         System.out.println(g);
 
         System.out.printf("player: %d\n",g.getPlayer());
