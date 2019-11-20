@@ -74,6 +74,7 @@ public class Fraction {
         int num1 = 0;
         int denom1 = 0;
         int num2 = 0;
+
         if (whole > 0) {
             num1 = (whole * denominator) + numerator;
             denom1 = denominator;
@@ -82,13 +83,14 @@ public class Fraction {
             num1 = numerator;
             denom1 = denominator;
         }
+
         if (denom1 != other.denominator) {
             num1 = (num1 * other.denominator);
             denom1 = (denom1 * other.denominator);
             num2 = (other.numerator * denominator);
             num1 = num1 - num2;
-
         }
+
         int n = num1;
         int d = denom1;
         Fraction result = new Fraction(n,d);
@@ -161,5 +163,12 @@ public class Fraction {
             return false;
         }
         return true;
+    }
+    public static void main(String[] args)
+    {
+        Fraction X = new Fraction(3, 2, 3);
+        Fraction Y = new Fraction(0, 3, 1);
+        Fraction Z = X.subtract(Y);
+        assert Z.toString().equals("2/3"): "Z.toString() == \"2/3\"";
     }
 }
