@@ -2,7 +2,7 @@ public class Sample {
     public static void main(String[] args) {
         Fraction X = new Fraction(3,3,2);
         System.out.println("X: " + X);
-        Fraction Y = new Fraction(0,1,2);
+        Fraction Y = new Fraction(3,2,3);
         System.out.println("Y: " + Y);
 
         Fraction A = X.add(Y);
