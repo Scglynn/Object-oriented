@@ -78,31 +78,46 @@ public class Fraction {
         int denom2 = 0;
 
         if (whole > 0) {
-            num1 = (whole * denominator) + numerator;
-            denom1 = denominator;
-            num1 = num1 - other.numerator;
+            num1 = (this.whole * this.denominator) + this.numerator;
+            denom1 = this.denominator;
+            //don't need to do this yet
+            //num1 = num1 - other.numerator;
         } else {
-            num1 = numerator;
-            denom1 = denominator;
+            num1 = this.numerator;
+            denom1 = this.denominator;
         }
         if (other.whole > 0) {
-            num3 = (other.whole * other.denominator) + other.numerator;
+            num2 = (other.whole * other.denominator) + other.numerator;
             denom2 = other.denominator;
-            num3 = num3 - this.numerator;
+            //not yet
+            //num3 = num3 - this.numerator;
         } else {
-            num3 = other.numerator;
+            num2 = other.numerator;
             denom2 = other.denominator;
-        }
-        if (denom1 != denom2) {
-            num1 = (num1 * denom2);
-            denom1 = (denom1 * denom2);
-            num2 = (num3 * denominator);
-            num1 = num1 - num2;
         }
 
-        int n = num1;
-        int d = denom1;
-        Fraction result = new Fraction(n,d);
+
+        if (denom1 != denom2) {
+            int denom1Start = denom1;
+            num1 = num1 * denom2;
+            denom1 = denom1 * denom2;
+            num2 = num2 * denom1Start;
+            denom2 = denom2 * denom1Start;
+        }
+
+        num3 = num1 - num2;
+
+        // if (denom1 != denom2) {
+        //     num1 = (num1 * denom2);
+        //     denom1 = (denom1 * denom2);
+        //     num2 = (num3 * denominator);
+        //     num1 = num1 - num2;
+        // }
+
+        // int n = num1;
+        // int d = denom1;
+        // Fraction result = new Fraction(n,d);
+        Fraction result = new Fraction(num3, denom2); //since both denoms ae the same, it doesn't matter which one we use
         return result;
     }
 
