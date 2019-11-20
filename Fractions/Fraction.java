@@ -80,7 +80,9 @@ public class Fraction {
         if (whole > 0) {
             num1 = (whole * denominator) + numerator;
             denom1 = denominator;
-            num1 = num1 - other.numerator;
+            if(denom1 == denom2) {
+                num1 = num1 - other.numerator;
+            }
         } else {
             num1 = numerator;
             denom1 = denominator;
@@ -88,18 +90,21 @@ public class Fraction {
         if (other.whole > 0) {
             num3 = (other.whole * other.denominator) + other.numerator;
             denom2 = other.denominator;
-            num3 = num3 - this.numerator;
+
         } else {
             num3 = other.numerator;
             denom2 = other.denominator;
+            
         }
         if (denom1 != denom2) {
             num1 = (num1 * denom2);
             denom1 = (denom1 * denom2);
             num2 = (num3 * denominator);
             num1 = num1 - num2;
+        }else {
+            num1 = num1 - other.numerator;
+            num3 = num3 - this.numerator;
         }
-
         int n = num1;
         int d = denom1;
         Fraction result = new Fraction(n,d);
@@ -172,12 +177,5 @@ public class Fraction {
             return false;
         }
         return true;
-    }
-    public static void main(String[] args)
-    {
-        Fraction X = new Fraction(3, 2, 3);
-        Fraction Y = new Fraction(0, 3, 1);
-        Fraction Z = X.subtract(Y);
-        assert Z.toString().equals("2/3"): "Z.toString() == \"2/3\"";
     }
 }
