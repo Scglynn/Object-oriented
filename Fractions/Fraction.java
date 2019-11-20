@@ -73,11 +73,23 @@ public class Fraction {
     public Fraction subtract(Fraction other) {
         int num1 = 0;
         int denom1 = 0;
+        int num2 = 0;
         if (whole > 0) {
             num1 = (whole * denominator) + numerator;
             denom1 = denominator;
+            num1 = num1 - other.numerator;
+        } else {
+            num1 = numerator;
+            denom1 = denominator;
         }
-        int n = num1 - other.numerator;
+        if (denom1 != other.denominator) {
+            num1 = (num1 * other.denominator);
+            denom1 = (denom1 * other.denominator);
+            num2 = (other.numerator * denominator);
+            num1 = num1 - num2;
+
+        }
+        int n = num1;
         int d = denom1;
         Fraction result = new Fraction(n,d);
         return result;
@@ -149,12 +161,5 @@ public class Fraction {
             return false;
         }
         return true;
-    }
-    public static void main(String[] args)
-    {
-        Fraction X = new Fraction(0, 9, 4);
-        Fraction Y = new Fraction(0, 8, 5);
-        Fraction Z = X.subtract(Y);
-        assert Z.toString().equals("13/20"): "Z.toString() == \"13/20\"";
     }
 }
