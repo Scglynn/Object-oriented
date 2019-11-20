@@ -74,6 +74,8 @@ public class Fraction {
         int num1 = 0;
         int denom1 = 0;
         int num2 = 0;
+        int num3 = 0;
+        int denom2 = 0;
 
         if (whole > 0) {
             num1 = (whole * denominator) + numerator;
@@ -83,11 +85,18 @@ public class Fraction {
             num1 = numerator;
             denom1 = denominator;
         }
-
-        if (denom1 != other.denominator) {
-            num1 = (num1 * other.denominator);
-            denom1 = (denom1 * other.denominator);
-            num2 = (other.numerator * denominator);
+        if (other.whole > 0) {
+            num3 = (other.whole * other.denominator) + other.numerator;
+            denom2 = other.denominator;
+            num3 = num3 - this.numerator;
+        } else {
+            num3 = other.numerator;
+            denom2 = other.denominator;
+        }
+        if (denom1 != denom2) {
+            num1 = (num1 * denom2);
+            denom1 = (denom1 * denom2);
+            num2 = (num3 * denominator);
             num1 = num1 - num2;
         }
 
