@@ -7,14 +7,12 @@ public class Fraction {
         this.whole = whole;
         this.numerator = numerator;
         this.denominator = denominator;
-        simplify();
     }
 
     public Fraction(int numerator, int denominator) {
         this.whole = 0;
         this.numerator = numerator;
         this.denominator = denominator;
-        simplify();
     }
 
     public Fraction(int whole) {
@@ -32,7 +30,6 @@ public class Fraction {
         whole = other.whole;
         numerator = other.numerator;
         denominator = other.denominator;
-        simplify();
     }
     private int[] simplify() {
         int[] ret = new int[3];
@@ -72,33 +69,18 @@ public class Fraction {
         Fraction result = new Fraction(whole , n, d);
         return result;
     }
-
+// 1/2 and 1/4 (1/2)4 = 4/8 (1/4)2=2/8
     public Fraction subtract(Fraction other) {
-        int whole, n , d;
-        int num1 = this.denominator * this.whole + this.numerator;
-        int num2 = other.denominator * other.whole + other.numerator;
-        whole = other.whole;
-        n = num1 * other.denominator - this.denominator*num2;
-        d = this.denominator*other.denominator;
-
-        if (n > 0) {
-            if (n>d) {
-                whole = (whole + n) /d;
-                n = n - d;
-            } 
-        }else {
-            if (-(n) > d) {
-                whole = (whole + n)/d;
-                n= n + d;
-            }
+        int num1 = 0;
+        int denom1 = 0;
+        if (whole > 0) {
+            num1 = (whole * denominator) + numerator;
+            denom1 = denominator;
         }
-        if (whole == 0) {
-            return new Fraction(n,d);
-        }
-        if(n == 0) 
-            return new Fraction (whole);
-        
-        return new Fraction(whole, n,d);
+        int n = num1 - other.numerator;
+        int d = denom1;
+        Fraction result = new Fraction(n,d);
+        return result;
     }
 
     public Fraction multiply(Fraction other) {
@@ -167,5 +149,12 @@ public class Fraction {
             return false;
         }
         return true;
+    }
+    public static void main(String[] args)
+    {
+        Fraction X = new Fraction(0, 9, 4);
+        Fraction Y = new Fraction(0, 8, 5);
+        Fraction Z = X.subtract(Y);
+        assert Z.toString().equals("13/20"): "Z.toString() == \"13/20\"";
     }
 }
