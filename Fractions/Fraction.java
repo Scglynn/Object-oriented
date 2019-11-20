@@ -147,29 +147,63 @@ public class Fraction {
     }
 
     public Fraction multiply(Fraction other) {
-        int n = numerator;
-        int d = denominator;
-        int w = whole;
+        int num1 = 0;
+        int denom1 = 0;
+        int num2 = 0;
+        int denom2 = 0;
 
-        if(whole >= 0) {
-            n = (d * whole) + n;
-            w = 0;
+        if (whole > 0) {
+            num1 = (whole * denominator) + numerator;
+            denom1 = denominator;
+        } else {
+            num1 = numerator;
+            denom1 = denominator;
         }
-        Fraction result = new Fraction(w, n * other.numerator, d * other.denominator);
+
+        if (other.whole > 0) {
+            num2 = (other.whole * other.denominator) + other.numerator;
+            denom2 = other.denominator;
+
+        } else {
+            num2 = other.numerator;
+            denom2 = other.denominator;
+        }
+        int n = num1 * num2;
+        int d = denom1 * denom2;
+
+        Fraction result = new Fraction(n,d);
         return result;
 
     }
 
     public Fraction divide(Fraction other) {
-        int n = numerator;
-        int d = denominator;
-        int w = whole;
+        int num1 = 0;
+        int num2 = 0;
+        int denom1 = 0;
+        int denom2 = 0;
 
-        if(whole >= 0) {
-            n = (d * whole) + n;
-            w = 0;
+
+        if (whole > 0) {
+            num1 = (whole * denominator) + numerator;
+            denom1 = denominator;
+        } else {
+            num1 = numerator;
+            denom1 = denominator;
         }
-        Fraction result = new Fraction(w, n*other.denominator, d*other.numerator);
+
+        if (other.whole > 0) {
+            num2 = (other.whole * other.denominator) + other.numerator;
+            denom2 = other.denominator;
+
+        } else {
+            num2 = other.numerator;
+            denom2 = other.denominator;
+        }
+
+        int n = num1 * denom2;
+        int d = denom1 * num2;
+
+        Fraction result = new Fraction(n,d);
         return result;
     }
     // Return a string representing the reduced fraction. In general a whole number, 
