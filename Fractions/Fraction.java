@@ -64,10 +64,45 @@ public class Fraction {
     }
  
     public Fraction add(Fraction other) {
-        int n = (numerator*other.denominator) + (other.numerator*denominator);
-        int d = (denominator*other.denominator);
-        Fraction result = new Fraction(whole , n, d);
+        int num1 = 0;
+        int denom1 = 0;
+        int num2 = 0;
+        int num3 = 0;
+        int denom2 = 0;
+
+        if (whole > 0) {
+            num1 = (whole * denominator) + numerator;
+            denom1 = denominator;
+            if(denom1 == denom2) {
+                num1 = num1 + other.numerator;
+            }
+        } else {
+            num1 = numerator;
+            denom1 = denominator;
+        }
+        if (other.whole > 0) {
+            num3 = (other.whole * other.denominator) + other.numerator;
+            denom2 = other.denominator;
+
+        } else {
+            num3 = other.numerator;
+            denom2 = other.denominator;
+            
+        }
+        if (denom1 != denom2) {
+            num1 = (num1 * denom2);
+            denom1 = (denom1 * denom2);
+            num2 = (num3 * denominator);
+            num1 = num1 + num2;
+        }else {
+            num1 = num1 + other.numerator;
+            num3 = num3 + this.numerator;
+        }
+        int n = num1;
+        int d = denom1;
+        Fraction result = new Fraction(n,d);
         return result;
+    
     }
 // 1/2 and 1/4 (1/2)4 = 4/8 (1/4)2=2/8
     public Fraction subtract(Fraction other) {
