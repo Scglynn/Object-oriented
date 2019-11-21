@@ -219,4 +219,10 @@ public class Mancala{
             return score1;
         }
     }
+    public static void main(String[] args)
+    {
+        int[] pits = {0,0,0,0,0,0,0,0,0,0,0,0};
+        Mancala m = new Mancala(10,pits,20,0);
+        assert m.toString().equals("10 |  0  0  0  0  0  0 |  *\n - |  0  0  0  0  0  0 | 20\n") : m;
+    }
 }
