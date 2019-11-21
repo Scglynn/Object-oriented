@@ -178,13 +178,13 @@ public class Mancala{
             return score1;
         }
     }
-    public static void main(String[] args)
-    {
-        Mancala m = new Mancala();
-        m.move(6);
-        m.move(2);
-        m.move(6);
-        m.move(6);
-        assert m.toString().equals(" 9 |  5  0  5  5  5  0 |  *\n - |  0  0  5  5  5  4 |  0\n") : m;
-    }
+    // public static void main(String[] args)
+    // {
+    //     Mancala m = new Mancala();
+    //     m.move(6);
+    //     m.move(2);
+    //     m.move(6);
+    //     m.move(6);
+    //     assert m.toString().equals(" 9 |  5  0  5  5  5  0 |  *\n - |  0  0  5  5  5  4 |  0\n") : m;
+    // }
 }
