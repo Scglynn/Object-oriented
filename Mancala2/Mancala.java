@@ -9,7 +9,6 @@ public class Mancala{
     private int score0 = 0;
     private int playerTurn = 0;
 
-    
     public Mancala() {
         gameBoard = new int [row][col];
         for (int i = 0; i < row; i++) {
@@ -47,7 +46,7 @@ public class Mancala{
         for(int i = 0; i < 6; i++) {
             ret = ret + String.format("%3d", gameBoard[0][i]);
         }
-        ret = ret + String.format("%3s", " |  ");
+        ret = ret + String.format("%4s", " |  ");
         if (playerTurn == 0) {
             ret = ret + "*";
         } else {
@@ -115,7 +114,7 @@ public class Mancala{
             playerTurn = 1; //next player turn
             //for player 0, the pit is bottom right on display. 
             //n is the pit to select so 6-n, where 6 is the number of pits, gives us the array element to start with
-            pit = 6-n; 
+            pit = 6 - n; 
             stones = gameBoard[1][pit]; // set the number of stones from the selected pit
             //if there aren't any stones to take, no move can be made
             if(stones == 0) {
@@ -174,28 +173,30 @@ public class Mancala{
             }
             gameBoard[0][pit] = 0;
             for (int s = pit - 1; s >= 0; s--) {
-                gameBoard[0][s] = gameBoard[0][s] + 1;
-                stones = stones -1;
-                //rule 4 test. See above.
-                if(stones == 0) {
-                    if(gameBoard[0][s] == 1) {
-                        gameBoard[0][s] = 0;
-                        score1 = score1 + 1;
-                        score1 = score1 + gameBoard[1][s];
-                        gameBoard[1][s] = 0; 
+                if (stones > 0) {
+                    gameBoard[0][s] = gameBoard[0][s] + 1;
+                    stones = stones - 1;
+                    //rule 4 test. See above.
+                    if (stones == 0) {
+                        if (gameBoard[0][s] == 1) {
+                            gameBoard[0][s] = 0;
+                            score1 = score1 + 1;
+                            score1 = score1 + gameBoard[1][s];
+                            gameBoard[1][s] = 0; 
+                        }
                     }
                 }
                 //end rule 4 test
             }
-            if(stones > 0) {
+            if (stones > 0) {
                 score1 = score1 + 1;
-                stones = stones -1;
+                stones = stones - 1;
                 playerTurn = 1;
-                if(stones > 0) {
+                if (stones > 0) {
                     //this time we start at the beginning of array, not the end
                     int ctr = 0;
                     playerTurn = 0;
-                    while(stones > 0) {
+                    while (stones > 0) {
                         gameBoard[1][ctr] = gameBoard[1][ctr] + 1;
                         stones = stones - 1;
                         ctr = ctr + 1;
@@ -205,7 +206,6 @@ public class Mancala{
         }
         //we made a move, return true
         return true;
-
     }
 
     public int getPlayer() {
