@@ -7,6 +7,9 @@ public abstract class Shape {
     abstract double getPerimeter(); // computes the perimeter
     abstract void move(int moveX, int moveY);
     public abstract void setColor(String Color);
+    public abstract void setOutline(String Outline);
+    public abstract String getColor();
+    public abstract String getOutline();
     public abstract int getTop();
     public abstract int getLeft();
     public abstract int getBottom();
@@ -117,11 +120,18 @@ class Box extends Shape {
     public void setHeight(int height) {
          this.height = height;
     }
-    public void setOutline(String outline) {
-        this.outline = outline;
-    }
     public void setColor(String color) {
         this.color = color;
+        if (color = String) { //TO-DO
+            throw new IllegalArgumentException("not a color");
+        }
+    }
+
+    public void setOutline(String outline) {
+        this.outline = outline;
+        if (condition) { //TO-DO
+            throw new IllegalArgumentException("null");
+        }
     }
 
     double getArea() {
@@ -131,10 +141,10 @@ class Box extends Shape {
     double getPerimeter() {
         return(2 * width) + (2*height);
     }
-    String getOutline(){
+    public String getOutline(){
         return outline;
     }
-    String getColor() {
+    public String getColor() {
         return color;
     }
 
@@ -143,7 +153,7 @@ class Box extends Shape {
         out = "<rect x=\"" + left + "\" y=\"" + top + "\" width=\"" + width + "\" height=\"" + height;
 
         if (color != null) {
-            out += "\" fill=\"" + color;   
+            out += "\" fill=\"" + color;
         }
 
         if (outline != null) {
@@ -228,9 +238,15 @@ class Circle extends Shape {
     }
     public void setOutline(String outline) {
         this.outline = outline;
+        if (condition) { //TO-DO
+            throw new IllegalArgumentException("null");
+        }
     }
     public void setColor(String color) {
         this.color = color;
+        if (condition) { //TO-DO
+            throw new IllegalArgumentException("null");
+        }
     }
     int getRadius() {
         return radius;
@@ -241,10 +257,10 @@ class Circle extends Shape {
     int getCenterY() {
         return cy;
     }
-    String getOutline(){
+    public String getOutline(){
         return outline;
     }
-    String getColor() {
+    public String getColor() {
         return color;
     }
 
@@ -384,9 +400,15 @@ class Triangle extends Shape {
     }
     public void setOutline(String outline) {
         this.outline = outline;
+        if (condition) { //TO-DO
+            throw new IllegalArgumentException("null");
+        }
     }
     public void setColor(String color) {
         this.color = color;
+        if (condition) { //TO-DO
+            throw new IllegalArgumentException("null");
+        }
     }
     
     int getCornerX1(){
@@ -407,10 +429,10 @@ class Triangle extends Shape {
     int getCornerY3(){
         return cy3;
     }
-    String getOutline(){
+    public String getOutline(){
         return outline;
     }
-    String getColor() {
+    public String getColor() {
         return color;
     }
     public String getElement() {
@@ -440,5 +462,11 @@ class Triangle extends Shape {
         this.cx3 = cx3 + moveX;
         this.cy3 = cy3 + moveY;
     }
-
+    public static void main(String[] args)
+    {
+        Shape b = new Box("white","black",1,2,3,4);
+        assert b.getColor().equals("white");
+        b.setColor("black");
+        assert b.getColor().equals("black");
+    }
 }
