@@ -131,15 +131,17 @@ public class Mancala{
             }
             gameBoard[0][pit] = 0;
             for (int s = pit - 1; s >= 0; s--) {
-                gameBoard[0][s] = gameBoard[0][s] + 1;
-                stones = stones - 1;
-                //rule 4 test. See above.
-                if(stones == 0) {
-                    if(gameBoard[0][s] == 1) {
-                        gameBoard[0][s] = 0;
-                        score1 = score1 + 1;
-                        score1 = score1 + gameBoard[1][s];
-                        gameBoard[1][s] = 0; 
+                if (stones > 0) {
+                    gameBoard[0][s] = gameBoard[0][s] + 1;
+                    stones = stones - 1;
+                    //rule 4 test. See above.
+                    if (stones == 0) {
+                        if (gameBoard[0][s] == 1) {
+                            gameBoard[0][s] = 0;
+                            score1 = score1 + 1;
+                            score1 = score1 + gameBoard[1][s];
+                            gameBoard[1][s] = 0;
+                        }
                     }
                 }
                 //end rule 4 test
