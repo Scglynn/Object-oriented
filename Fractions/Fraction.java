@@ -221,7 +221,7 @@ public class Fraction {
             return newVals[0] + "";
         }
         if (newVals[1] < 0 ) {
-            return "-" + newVals[0];
+            return newVals[0] + " " + newVals[1] + "/" + newVals[2];
         }
 
         return newVals[0] + " " + newVals[1] + "/" + newVals[2];
@@ -246,5 +246,12 @@ public class Fraction {
             return false;
         }
         return true;
+    }
+    public static void main(String[] args)
+    {
+        Fraction X = new Fraction(10, 30, 31);
+        Fraction Y = new Fraction(20, 1, 2);
+        Fraction Z = X.subtract(Y);
+        assert Z.toString().equals("-9 33/62"): "Z.toString() == \"-9 33/62\"";
     }
 }
