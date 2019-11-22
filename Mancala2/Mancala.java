@@ -62,10 +62,11 @@ public class Mancala{
         }
 
         for (int i = 0; i < 6; i++) {
-            
+
             ret = ret + String.format("%3d", gameBoard[1][i]);
         }
-        ret = ret + String.format("%4s"," | " + score0 + "\n");
+        ret = ret + " |";
+        ret = ret + String.format("%4s", score0 + "\n");
         
 
         return ret;
