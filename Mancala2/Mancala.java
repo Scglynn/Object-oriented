@@ -65,7 +65,7 @@ public class Mancala{
             
             ret = ret + String.format("%3d", gameBoard[1][i]);
         }
-        ret = ret + String.format("%4s"," |  " + score0 + "\n");
+        ret = ret + String.format("%4s"," | " + score0 + "\n");
         
 
         return ret;
@@ -222,7 +222,7 @@ public class Mancala{
     public static void main(String[] args)
     {
         int[] pits = {0,0,0,0,0,0,0,0,0,0,0,0};
-        Mancala m = new Mancala(10,pits,20,0);
+        Mancala m = new Mancala(10, pits, 20, 0);
         assert m.toString().equals("10 |  0  0  0  0  0  0 |  *\n - |  0  0  0  0  0  0 | 20\n") : m;
     }
 }
