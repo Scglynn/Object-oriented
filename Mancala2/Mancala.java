@@ -31,7 +31,7 @@ public class Mancala{
             
             //step through this in debugger to understand how it works
             if (i == 1) {
-                offset = 5; //offset used to continue going over the pit array that is passed in on the constructor
+                offset = 6; //offset used to continue going over the pit array that is passed in on the constructor
             }
 
             for (int j = 0; j < col; j++) {
@@ -222,8 +222,8 @@ public class Mancala{
     }
     public static void main(String[] args)
     {
-        int[] pits = {0,0,0,0,0,0,0,0,0,0,0,0};
-        Mancala m = new Mancala(10, pits, 20, 0);
-        assert m.toString().equals("10 |  0  0  0  0  0  0 |  *\n - |  0  0  0  0  0  0 | 20\n") : m;
+        int[] pits = {2,3,4,5,6,7,8,9,10,11,12,13};
+        Mancala m = new Mancala(1,pits,14,0);
+        assert m.toString().equals(" 1 |  2  3  4  5  6  7 |  *\n - |  8  9 10 11 12 13 | 14\n") : m;
     }
 }
