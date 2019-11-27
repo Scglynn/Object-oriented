@@ -462,11 +462,4 @@ class Triangle extends Shape {
         this.cx3 = cx3 + moveX;
         this.cy3 = cy3 + moveY;
     }
-    // public static void main(String[] args)
-    // {
-    //     Shape b = new Box("white","black",1,2,3,4);
-    //     assert b.getColor().equals("white");
-    //     b.setColor("black");
-    //     assert b.getColor().equals("black");
-    // }
 }
