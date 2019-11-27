@@ -135,8 +135,8 @@ class Box extends Shape {
 
     public void setOutline(String outline) {
         this.outline = outline;
-        if (outline == "" || outline == "null") {
-            throw new IllegalArgumentException("null");
+        if (outline == "" || outline == "null" || !validColor(outline)) {
+            throw new IllegalArgumentException("not a color");
         }
     }
 
@@ -242,15 +242,17 @@ class Circle extends Shape {
     public void setRadius(int radius) {
         this.radius = radius;
     }
-    public void setOutline(String outline) {
-        this.outline = outline;
-        if (outline == "" || outline == "null") {
-            throw new IllegalArgumentException("null");
-        }
-    }
+
     public void setColor(String color) {
         this.color = color;
         if (color == "" || color == "null" || !validColor(color)) {
+            throw new IllegalArgumentException("not a color");
+        }
+    }
+
+    public void setOutline(String outline) {
+        this.outline = outline;
+        if (outline == "" || outline == "null" || !validColor(outline)) {
             throw new IllegalArgumentException("not a color");
         }
     }
@@ -404,15 +406,16 @@ class Triangle extends Shape {
     public void setCornerY3(int cy3){
         this.cy3 = cy3;
     }
-    public void setOutline(String outline) {
-        this.outline = outline;
-        if (outline == "" || outline == "null") {
-            throw new IllegalArgumentException("null");
-        }
-    }
+
     public void setColor(String color) {
         this.color = color;
         if (color == "" || color == "null" || !validColor(color)) {
+            throw new IllegalArgumentException("not a color");
+        }
+    }
+    public void setOutline(String outline) {
+        this.outline = outline;
+        if (outline == "" || outline == "null" || !validColor(outline)) {
             throw new IllegalArgumentException("not a color");
         }
     }
@@ -468,17 +471,9 @@ class Triangle extends Shape {
         this.cx3 = cx3 + moveX;
         this.cy3 = cy3 + moveY;
     }
-    
         public static void main(String[] args)
-        {
-            boolean caught = false;
-            try {
-                Shape t = new Circle("#white",null,0,0,10);
-            }
-            catch (IllegalArgumentException e) {
-                caught = true;
-            }
-            assert caught;
-        }
-    
+    {
+        Circle C = new Circle("green",null,25,12,5);
+        assert C.toString().equals("<circle cx=\"25\" cy=\"12\" r=\"5\" fill=\"green\" />"): C + " is not right";
+    }
 }
