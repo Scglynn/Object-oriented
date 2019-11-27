@@ -35,8 +35,6 @@ public class Calculator {
 
                 //case "abs": stack = Math.abs(inputA); break;
             }
-            System.out.println(stack);
         }
-        input.close();
     }
 }
