@@ -60,8 +60,8 @@ class Box extends Shape {
 
 
     Box(String color, String outline, int left, int top, int width, int height) {
-        this.color = color;
-        this.outline = outline;
+        this.setColor(color);
+        this.setOutline(outline);
         this.left = left;
         this.top = top;
         this.width = width;
@@ -122,14 +122,14 @@ class Box extends Shape {
     }
     public void setColor(String color) {
         this.color = color;
-        if (color = String) { //TO-DO
+        if (color == "" || color == "null") {
             throw new IllegalArgumentException("not a color");
         }
     }
 
     public void setOutline(String outline) {
         this.outline = outline;
-        if (condition) { //TO-DO
+        if (outline == "" || outline == "null") {
             throw new IllegalArgumentException("null");
         }
     }
@@ -190,8 +190,8 @@ class Circle extends Shape {
     int right=0;
 
     public Circle(String color, String outline,int cx, int cy, int radius) {
-        this.color = color;
-        this.outline = outline;
+        this.setColor(color);
+        this.setOutline(outline);
         this.cx = cx;
         this.cy = cy;
         this.radius = radius;
@@ -238,14 +238,14 @@ class Circle extends Shape {
     }
     public void setOutline(String outline) {
         this.outline = outline;
-        if (condition) { //TO-DO
+        if (outline == "" || outline == "null") {
             throw new IllegalArgumentException("null");
         }
     }
     public void setColor(String color) {
         this.color = color;
-        if (condition) { //TO-DO
-            throw new IllegalArgumentException("null");
+        if (color == "" || color == "null") {
+            throw new IllegalArgumentException("not a color");
         }
     }
     int getRadius() {
@@ -308,8 +308,8 @@ class Triangle extends Shape {
     int right=0;
 
     public Triangle(String color, String outline, int cx1,int cy1, int cx2, int cy2, int cx3, int cy3) {
-        this.color = color;
-        this.outline = outline;
+        this.setColor(color);
+        this.setOutline(outline);
         this.cx1 = cx1;
         this.cy1 = cy1;
         this.cx2 = cx2;
@@ -400,14 +400,14 @@ class Triangle extends Shape {
     }
     public void setOutline(String outline) {
         this.outline = outline;
-        if (condition) { //TO-DO
+        if (outline == "" || outline == "null") {
             throw new IllegalArgumentException("null");
         }
     }
     public void setColor(String color) {
         this.color = color;
-        if (condition) { //TO-DO
-            throw new IllegalArgumentException("null");
+        if (color == "" || color == "null") {
+            throw new IllegalArgumentException("not a color");
         }
     }
     
@@ -462,11 +462,11 @@ class Triangle extends Shape {
         this.cx3 = cx3 + moveX;
         this.cy3 = cy3 + moveY;
     }
-    public static void main(String[] args)
-    {
-        Shape b = new Box("white","black",1,2,3,4);
-        assert b.getColor().equals("white");
-        b.setColor("black");
-        assert b.getColor().equals("black");
-    }
+    // public static void main(String[] args)
+    // {
+    //     Shape b = new Box("white","black",1,2,3,4);
+    //     assert b.getColor().equals("white");
+    //     b.setColor("black");
+    //     assert b.getColor().equals("black");
+    // }
 }
