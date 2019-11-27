@@ -13,7 +13,13 @@ public abstract class Shape {
     public abstract int getTop();
     public abstract int getLeft();
     public abstract int getBottom();
-    public abstract int getRight();    
+    public abstract int getRight();
+    public boolean validColor(String color) {
+        String [] colors = new String[] {"aqua", "black", "blue", "fuchsia", "gray", "green", "lime", "maroon", "navy", "olive", "purple", "red", "silver", "teal", "white","yellow"};
+        List<String> list = Arrays.asList(colors);
+        return list.contains(color);
+    }
+
     public final String toString() {
         return getElement();
     }
@@ -122,7 +128,7 @@ class Box extends Shape {
     }
     public void setColor(String color) {
         this.color = color;
-        if (color == "" || color == "null") {
+        if (color == "" || color == "null" || !validColor(color)) {
             throw new IllegalArgumentException("not a color");
         }
     }
@@ -244,7 +250,7 @@ class Circle extends Shape {
     }
     public void setColor(String color) {
         this.color = color;
-        if (color == "" || color == "null") {
+        if (color == "" || color == "null" || !validColor(color)) {
             throw new IllegalArgumentException("not a color");
         }
     }
@@ -406,7 +412,7 @@ class Triangle extends Shape {
     }
     public void setColor(String color) {
         this.color = color;
-        if (color == "" || color == "null") {
+        if (color == "" || color == "null" || !validColor(color)) {
             throw new IllegalArgumentException("not a color");
         }
     }
@@ -462,4 +468,17 @@ class Triangle extends Shape {
         this.cx3 = cx3 + moveX;
         this.cy3 = cy3 + moveY;
     }
+    
+        public static void main(String[] args)
+        {
+            boolean caught = false;
+            try {
+                Shape t = new Circle("#white",null,0,0,10);
+            }
+            catch (IllegalArgumentException e) {
+                caught = true;
+            }
+            assert caught;
+        }
+    
 }
