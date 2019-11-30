@@ -15,8 +15,11 @@ public abstract class Shape {
     public abstract int getBottom();
     public abstract int getRight();
     public boolean validColor(String color) {
-        String [] colors = new String[] {"aqua", "black", "blue", "fuchsia", "gray", "green", "lime", "maroon", "navy", "olive", "purple", "red", "silver", "teal", "white","yellow"};
+        String [] colors = new String[] {"aqua", "black", "blue", "fuchsia", "gray", "green", "lime", "maroon", "navy", "olive", "purple", "red", "silver", "teal", "white", "yellow"};
         List<String> list = Arrays.asList(colors);
+        if (color == null) {
+            return true;
+        }
         return list.contains(color);
     }
 
@@ -470,10 +473,5 @@ class Triangle extends Shape {
         this.cy2 = cy2 + moveY;
         this.cx3 = cx3 + moveX;
         this.cy3 = cy3 + moveY;
-    }
-        public static void main(String[] args)
-    {
-        Circle C = new Circle("green",null,25,12,5);
-        assert C.toString().equals("<circle cx=\"25\" cy=\"12\" r=\"5\" fill=\"green\" />"): C + " is not right";
     }
 }
