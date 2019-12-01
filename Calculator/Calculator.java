@@ -1,16 +1,17 @@
 import java.util.*;
 
-public class Calculator {
-    public static void main(String args []) {
-        double inputA, inputB;
-        String operator;
+ public class Calculator {
+    public static void main(String[] args) {
+        Stack stack = new Stack();
+        Scanner scan = new Scanner(System.in);
 
-        Scanner input = new Scanner(System.in);
-
-        while(input.hasNextLine()){
-            inputA = input.nextDouble();
-            inputB = input.nextDouble();
-            operator = input.next();
+        while(scan.hasNextDouble())
+            stack.push(scan.nextDouble());
+    }
+//         while(input.hasNextLine()){
+//             inputA = input.nextDouble();
+//             inputB = input.nextDouble();
+//             operator = input.next();
 
             //helps to determine the operator and what it should do
             // switch (operator) {
@@ -34,38 +35,53 @@ public class Calculator {
 
                 //case "abs": stack = Math.abs(inputA); break;
             //}
-        }
-    }
+        //}
+    //}
 }
  class Stack {
-    private double arr[];
-    private double top;
-    private double capacity;
-    public Stack(double s) {
-        top = -1;
-        capacity = s;
-        arr = new double[capacity];
+    private int maxSize = 4; 
+    private double stack [] = new double[maxSize];
+    private int top = 0;
+
+    public void push(double data) {
+        stack[top] = data;
+        top++;
     }
-    public Boolean isEmpty() {
-        return top == -1;
-    }
-    public Boolean isFull() {
-        return top == capacity -1;
-    }
-    public double push(double x) {
-        return arr[++top] = x;
-    }
+
     public double pop() {
-        return arr[top--];
+        double data;
+        data = stack[top];
+        top--;
+        stack[top] = 0;
+
+        return data;
     }
-    
+
+    public double peek() {
+        double data = stack[top-1];
+        return data;
+    }
+    public boolean isEmpty() {
+        return (top == -1);
+     }
+
+     public boolean isFull() {
+
+        return (top == maxSize - 1);
+     }
+
+    public void show() {
+        for (double n : stack) {
+            System.out.println(n + " ");
+        }
+    }
+
 
 }
 
 abstract class Operations {
     public abstract String getDescribe();
     
-
 }
 class Plus extends Operations {
     double inputA = 0;
@@ -76,6 +92,11 @@ class Plus extends Operations {
         this.inputA = inputA;
         this.inputB = inputB;
         this.operator = operator;
+    }
+    @Override
+    public String getDescribe() {
+        // TODO Auto-generated method stub
+        return "PLus";
     }
 }
 
@@ -89,7 +110,11 @@ class Minus extends Operations {
         this.inputB = inputB;
         this.operator = operator;
     }
-    
+    @Override
+    public String getDescribe() {
+        // TODO Auto-generated method stub
+        return "Minus";
+    }
 }
 
 class Multiply extends Operations {
@@ -102,6 +127,11 @@ class Multiply extends Operations {
         this.inputB = inputB;
         this.operator = operator;
     }
+    @Override
+    public String getDescribe() {
+        // TODO Auto-generated method stub
+        return "Multiply";
+    }
 }
 
 class Divide extends Operations {
@@ -113,5 +143,10 @@ class Divide extends Operations {
         this.inputA = inputA;
         this.inputB = inputB;
         this.operator = operator;
+    }
+    @Override
+    public String getDescribe() {
+        // TODO Auto-generated method stub
+        return "Divide";
     }
 }
