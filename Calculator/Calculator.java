@@ -7,6 +7,7 @@ import java.util.*;
 
         while(scan.hasNextDouble())
             stack.push(scan.nextDouble());
+            char operator = "";
     }
 //         while(input.hasNextLine()){
 //             inputA = input.nextDouble();
