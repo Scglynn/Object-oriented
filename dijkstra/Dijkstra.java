@@ -1,4 +1,3 @@
-//https://www.geeksforgeeks.org/dijkstras-shortest-path-algorithm-greedy-algo-7/
 class DijkstrasAlgorithm { 
   
     private static final int NO_PARENT = -1; 
@@ -34,14 +33,8 @@ class DijkstrasAlgorithm {
                     shortestDistance = shortestDistances[vertexIndex]; 
                 } 
             } 
-  
-            // Mark the picked vertex as 
-            // processed 
             added[nearestVertex] = true; 
-  
-            // Update dist value of the 
-            // adjacent vertices of the 
-            // picked vertex. 
+
             for (int vertexIndex = 0; vertexIndex < nVertices; vertexIndex++) {
                 int edgeDistance = adjacencyMatrix[nearestVertex][vertexIndex]; 
                   
@@ -54,10 +47,7 @@ class DijkstrasAlgorithm {
   
         printSolution(startVertex, shortestDistances, parents); 
     } 
-  
-    // A utility function to print  
-    // the constructed distances 
-    // array and shortest paths 
+
     private static void printSolution(int startVertex, int[] distances, int[] parents) 
     { 
         int nVertices = distances.length; 
@@ -79,9 +69,7 @@ class DijkstrasAlgorithm {
     }
 
     private static void printPath(int currentVertex, int[] parents) 
-    { 
-        // Base case : Source node has 
-        // been processed 
+    {
         if (currentVertex == NO_PARENT) 
         { 
             return; 
