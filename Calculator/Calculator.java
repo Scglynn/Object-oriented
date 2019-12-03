@@ -9,9 +9,6 @@ import java.util.*;
             stack.push(scan.nextDouble());
             char operator = "";
     }
-//         while(input.hasNextLine()){
-//             inputA = input.nextDouble();
-//             inputB = input.nextDouble();
 //             operator = input.next();
 
             //helps to determine the operator and what it should do
