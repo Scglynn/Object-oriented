@@ -2,17 +2,17 @@ import java.util.*;
 
  public class Calculator {
      //trying to type out the Psuedocode 
-     Operation find(String token) {
-         for (iterable_type iterable_element : iterable) {
-             if(op.name == token) {
-                return op;
-             }
-             return Literal(token);
-         }
-     }
-     static void interpret(String line) {
+    //  Operation find(String token) {
+    //      for (iterable_type iterable_element : iterable) {
+    //          if(op.name == token) {
+    //             return op;
+    //          }
+    //          return Literal(token);
+    //      }
+    //  }
+    //  static void interpret(String line) {
 
-     }
+    //  }
     public static void main(String[] args) {
         Stack stack = new Stack();
         Scanner scan = new Scanner(System.in);
@@ -91,6 +91,9 @@ import java.util.*;
 
 abstract class Operations {
     public abstract String getDescribe();
+    public abstract Double Action();
+    //action operates on the stack. Whether you need to pop a number off the stack or push a number onto the stack.
+    //and takes in the Stack as a parameter.
     
 }
 class Plus extends Operations {
@@ -103,10 +106,9 @@ class Plus extends Operations {
         this.inputB = inputB;
         this.operator = operator;
     }
-    @Override
     public String getDescribe() {
         // TODO Auto-generated method stub
-        return "PLus";
+        return "Plus";
     }
 }
 
@@ -120,7 +122,6 @@ class Minus extends Operations {
         this.inputB = inputB;
         this.operator = operator;
     }
-    @Override
     public String getDescribe() {
         // TODO Auto-generated method stub
         return "Minus";
@@ -137,7 +138,6 @@ class Multiply extends Operations {
         this.inputB = inputB;
         this.operator = operator;
     }
-    @Override
     public String getDescribe() {
         // TODO Auto-generated method stub
         return "Multiply";
@@ -154,7 +154,6 @@ class Divide extends Operations {
         this.inputB = inputB;
         this.operator = operator;
     }
-    @Override
     public String getDescribe() {
         // TODO Auto-generated method stub
         return "Divide";
