@@ -94,6 +94,8 @@ abstract class Operations {
     public abstract Double Action();
     //action operates on the stack. Whether you need to pop a number off the stack or push a number onto the stack.
     //and takes in the Stack as a parameter.
+    //step 1 Operator name: "-" needs a way to set the name    
+    //step 2 Minus name: "-" send in the minus "-" string to parent class super("-")
     
 }
 class Plus extends Operations {
