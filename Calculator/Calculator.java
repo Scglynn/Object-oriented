@@ -1,6 +1,18 @@
 import java.util.*;
 
  public class Calculator {
+     //trying to type out the Psuedocode 
+     Operation find(String token) {
+         for (iterable_type iterable_element : iterable) {
+             if(op.name == token) {
+                return op;
+             }
+             return Literal(token);
+         }
+     }
+     static void interpret(String line) {
+
+     }
     public static void main(String[] args) {
         Stack stack = new Stack();
         Scanner scan = new Scanner(System.in);
