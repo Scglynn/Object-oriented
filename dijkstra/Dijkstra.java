@@ -7,8 +7,7 @@ class DijkstrasAlgorithm {
 
         boolean[] added = new boolean[nVertices]; 
 
-        for (int vertexIndex = 0; vertexIndex < nVertices;  
-                                            vertexIndex++) 
+        for (int vertexIndex = 0; vertexIndex < nVertices; vertexIndex++) 
         { 
             shortestDistances[vertexIndex] = Integer.MAX_VALUE; 
             added[vertexIndex] = false; 
@@ -22,7 +21,6 @@ class DijkstrasAlgorithm {
         int[] parents = new int[nVertices]; 
 
         parents[startVertex] = NO_PARENT; 
-  
         // Find shortest path for all vertices
         for (int i = 1; i < nVertices; i++) { 
             int nearestVertex = -1; 
@@ -54,9 +52,7 @@ class DijkstrasAlgorithm {
         System.out.printf("\tTable A\n");
         System.out.print("Vertex:\t    Distance:\t       Path:"); 
           
-        for (int vertexIndex = 0;  
-                 vertexIndex < nVertices;  
-                 vertexIndex++)  
+        for (int vertexIndex = 0; vertexIndex < nVertices; vertexIndex++)  
         { 
             if (vertexIndex != startVertex)  
             { 
@@ -89,9 +85,7 @@ class DijkstrasAlgorithm {
                                     {0,4,0,1,3,0,4,3,0},
                                     {0,0,0,2,0,4,0,0,0},
                                     {0,0,0,0,3,3,0,0,1},
-                                    {0,0,6,0,2,0,0,1,0}
-                                    };
-
+                                    {0,0,6,0,2,0,0,1,0}};
         dijkstra(adjacencyMatrix, 0); 
     } 
 }
