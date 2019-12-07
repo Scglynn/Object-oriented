@@ -8,15 +8,15 @@ public class AdjacencyMatrix<T> {
         this.nodes = Arrays.asList(nodes);
         dist1 = new int[nodes.length][nodes.length];
     }
-    public void setDistance(T a, T b, int distance) {
+    public void setDistance(T a, T b, int d) {
         int x = nodes.indexOf(a);
         int y = nodes.indexOf(b);
 
         if (x < 0 || y < 0) {
             throw new UnsupportedOperationException("item not found");
         }
-        dist1[x][y] = distance;
-        dist1[y][x] = distance; 
+        dist1[x][y] = d;
+        dist1[y][x] = d; 
     }
 
     public int getDistance(T a, T b) {
