@@ -2,52 +2,62 @@ import java.util.*;
 
 public class AdjacencyMatrix<T> {
     List<T> nodes = new ArrayList<>();
-    int dist1[][];
+    int dist[][];
 
+    //The Constructor of taking in the given nodes from the Sample file
     public AdjacencyMatrix(T nodes[]) {
         this.nodes = Arrays.asList(nodes);
-        dist1 = new int[nodes.length][nodes.length];
+        dist = new int[nodes.length][nodes.length];
     }
-    public void setDistance(T a, T b, int d) {
+
+    //This helps set the distance from A --> B and reversely reversely saying that B --> A is the same distance
+    void setDistance(T a, T b, int d) {
         int x = nodes.indexOf(a);
         int y = nodes.indexOf(b);
 
         if (x < 0 || y < 0) {
             throw new UnsupportedOperationException("item not found");
         }
-        dist1[x][y] = d;
-        dist1[y][x] = d; 
+        dist[x][y] = d;
+        dist[y][x] = d; 
     }
 
-    public int getDistance(T a, T b) {
+    //Gets the distance between two nodes A --> B
+     int getDistance(T a, T b) {
         int x = nodes.indexOf(a);
         int y = nodes.indexOf(b);
 
-        if (x ==y)
+        if (x ==y) {
             return 0;
-        if (dist1[x][y] == 0)
+        }
+        if (dist[x][y] == 0) {
             return -1;
+        }
 
         try {
-            return dist1[x][y];
+            return dist[x][y];
         } catch (ArrayIndexOutOfBoundsException e) {
             throw new UnsupportedOperationException("item not found");
         }
     }
 
-    public T getNode(int i) {
+    //get the i-th node
+     T getNode(int i) {
         return nodes.get(i);
     }
 
-    public int getSize() {
+    //Gets the number of nodes
+     int getSize() {
         return nodes.size();
     }
 
-    public String getTable(int colWidth) {
+    // This helps set up the table and the format that it needs to be set as
+     String getTable(int colWidth) {
+        //%10.10s the string format for column width
         String ret = String.format("%" + colWidth + "." + colWidth + "s", " ");
 
         for (T node : nodes) {
-            ret += String.format("%" + colWidth + "." + colWidth+ "s", node);
+            ret += String.format(" %" + colWidth + "." + colWidth+ "s", node);
         }
         ret += "\n";
 
@@ -55,12 +65,12 @@ public class AdjacencyMatrix<T> {
             ret += String.format("%" + colWidth + "." + colWidth + "s", nodes.get(i));
 
             for (int j = 0; j < nodes.size(); j++) {
-                if (i ==j && dist1[i][j] == 0)
-                    ret += String.format("%" + colWidth + "." + colWidth + "s", " ");
-                else if (dist1[i][j] < 0)
-                    ret += String.format("%" + colWidth + "." + colWidth + "s", "-");
+                if (i ==j && dist[i][j] == 0)
+                    ret += String.format(" %" + colWidth + "." + colWidth + "s", " ");
+                else if (dist[i][j] < 0)
+                    ret += String.format(" %" + colWidth + "." + colWidth + "s", "-");
                 else
-                    ret += String.format("%" + colWidth + "." + colWidth + "s", dist1[i][j]);
+                    ret += String.format(" %" + colWidth + "." + colWidth + "s", dist[i][j]);
             }
             ret += "\n";
         }
