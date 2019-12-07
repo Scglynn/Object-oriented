@@ -67,7 +67,7 @@ public class AdjacencyMatrix<T> {
             for (int j = 0; j < nodes.size(); j++) {
                 if (i ==j && dist[i][j] == 0)
                     ret += String.format(" %" + colWidth + "." + colWidth + "s", " ");
-                else if (dist[i][j] < 0)
+                else if (dist[i][j] <= 0)
                     ret += String.format(" %" + colWidth + "." + colWidth + "s", "-");
                 else
                     ret += String.format(" %" + colWidth + "." + colWidth + "s", dist[i][j]);
