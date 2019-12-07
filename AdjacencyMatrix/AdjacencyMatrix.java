@@ -1,6 +1,7 @@
 import java.util.*;
 
 public class AdjacencyMatrix<T> {
+    //Generics: enables programmers to specify, with a single method declaration
     List<T> nodes = new ArrayList<>();
     int dist[][];
 
@@ -27,7 +28,7 @@ public class AdjacencyMatrix<T> {
         int x = nodes.indexOf(a);
         int y = nodes.indexOf(b);
 
-        if (x ==y) {
+        if (x == y) {
             return 0;
         }
         if (dist[x][y] == 0) {
